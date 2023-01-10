@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title> Страница товара </title>
+</head>
+<body>
+<!--<nav>-->
+<!--  <ul>-->
+<!--    <li class="brand"><img th:src="@{/{storeName}(storeName=${product.getStoreName()})/{idProduct}(idProduct=${product.getIdProduct()})/{image1}(image1=${product.getIdProduct() + '_1.jpeg'})}"></li>-->
+<!--  </ul>-->
+<!--</nav>-->
+<img  th:src = "@{/static/images/moba/{idProduct}(idProduct=${product.getIdProduct()})/{image1}(image1=${product.getIdProduct() + '_1.jpeg'})}" />
+<li class="brand"><img th:src="@{/{storeName}(storeName=${product.getStoreName()})/{idProduct}(idProduct=${product.getIdProduct()})/{image1}(image1=${product.getIdProduct() + '_1.jpeg'})}"></li>
+<li><img th:src="@{/static/images/moba/9622/{image1}(image1=${product.getIdProduct() + '_1.jpeg'})}"></li>
+<img th:src="@{/static/images/moba/9622/9622_1.jpeg}"/>
+<li class="brand"><img th:src="@{/upload/product.getStoreName()/product.getIdProduct()/product.getIdProduct()'_1.jpeg'}"></li>
+<p th:text="${'/' + product.getStoreName() + '/' + product.getIdProduct() + '/' + product.getIdProduct() + '_1.jpeg'}">VALUE</p>
+<p th:text="${product.getProductName() + ' ,' + product.getStoreName()}">VALUE</p>
+<p th:text="${product.isInStock()}">VALUE</p>
+<p th:text="${'Цена розница: ' + product.getRetailPrice()}">VALUE</p>
+<p th:text="${'Цена ОПТ: ' + product.getWholesalePrice()}">VALUE</p>
+<p th:text="${'Количество: ' + product.getCount}">VALUE</p>
+<p th:text="${product.getId()}">VALUE</p>
+
+<!--<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>-->
+
+<!--<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">-->
+<!--  <input type="submit" value="Delete!">-->
+<!--</form>-->
+</body>
+</html>

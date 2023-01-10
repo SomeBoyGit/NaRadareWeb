@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+</head>
+<body>
+<form th:action="@{/products/result}" th:object="${search}" method="post">
+    <h2><label for="searchText">Поиск на Митинском радиорынке</label></h2>
+    <input type="text" th:field="*{searchText}" id="searchText">
+    <button type="submit">Search</button>
+</form>
+</body>
+</html>

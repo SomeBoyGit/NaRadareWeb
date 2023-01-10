@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все товары</title>
+</head>
+<body>
+<h1>Index</h1>
+
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Наименование</td>
+        <td>Наличие</td>
+        <td>Розница</td>
+        <td>ОПТ</td>
+        <td>Кол-во</td>
+    </tr>
+    <tr th:each="product : ${products}">
+
+        <td th:text="${product.getStoreName()}"></td>
+        <td> <a th:href="@{/products/{id}(id=${product.getIdProduct()})}"
+         th:text="${product.getProductName()}"></a></td>
+        <td th:text="${product.isInStock()}"></td>
+        <td th:text="${product.getRetailPrice()}"></td>
+        <td th:text="${product.getWholesalePrice()}"></td>
+        <td th:text="${product.getCount()}"></td>
+
+    </tr>
+</table>
+
+<br/>
+<hr/>
+
+<!--<a href="/people/new">Create new person</a>-->
+
+</body>
+</html>

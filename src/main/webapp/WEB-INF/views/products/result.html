@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+</head>
+<body>
+<!--<h1>Result</h1>-->
+<!--<form th:action="@{/products}">-->
+<!--    <input type="submit" value="Вернуться к поиску">-->
+<!--</form>-->
+<!--/*@thymesVar id="search" type="ru"*/-->
+<form th:action="@{/products/result}" th:object="${search}" method="post">
+    <h2><label for="searchText">Поиск на Митинском радиорынке</label></h2>
+    <input type="text" th:field="*{searchText}" id="searchText">
+    <button type="submit">Search</button>
+</form>
+<br/>
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Наименование</td>
+        <td>Наличие</td>
+        <td>Розница</td>
+        <td>ОПТ</td>
+        <td>Кол-во</td>
+    </tr>
+    <tr th:each="product : ${products}">
+<!--        a.text:active, /* активная/посещенная ссылка */-->
+<!--        a.text:hover,  /* при наведении */-->
+<!--        a.text {-->
+<!--        text-decoration: none;-->
+<!--        color: #666;-->
+<!--        }-->
+
+        <td th:text="${product.getStoreName()}"></td>
+        <td> <a th:href="@{/products/{id}(id=${product.getIdProduct()})}"
+                th:text="${product.getProductName()}"></a></td>
+        <td th:text="${product.isInStock()}"></td>
+        <td th:text="${product.getRetailPrice()}"></td>
+        <td th:text="${product.getWholesalePrice()}"></td>
+        <td th:text="${product.getCount()}"></td>
+
+    </tr>
+</table>
+
+<br/>
+<hr/>
+</body>
+</html>
